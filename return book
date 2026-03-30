@@ -1,0 +1,15 @@
+public void returnBook(int issueId) {
+    try {
+        Connection con = DBConnection.getConnection();
+
+        String query = "UPDATE issue_book SET return_date = CURDATE() WHERE issue_id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, issueId);
+        ps.executeUpdate();
+
+        System.out.println("Book Returned!");
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
