@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Library lib = new Library();
+
+        while (true) {
+            System.out.println("\n1. Add Book");
+            System.out.println("2. View Books");
+            System.out.println("3. Issue Book");
+            System.out.println("4. Return Book");
+            System.out.println("5. Exit");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Title: ");
+                    String title = sc.next();
+                    System.out.print("Author: ");
+                    String author = sc.next();
+                    System.out.print("Quantity: ");
+                    int qty = sc.nextInt();
+                    lib.addBook(title, author, qty);
+                    break;
+
+                case 2:
+                    lib.viewBooks();
+                    break;
+
+                case 3:
+                    System.out.print("Book ID: ");
+                    int bId = sc.nextInt();
+                    System.out.print("Member ID: ");
+                    int mId = sc.nextInt();
+                    lib.issueBook(bId, mId);
+                    break;
+
+                case 4:
+                    System.out.print("Issue ID: ");
+                    int iId = sc.nextInt();
+                    lib.returnBook(iId);
+                    break;
+
+                case 5:
+                    System.exit(0);
+            }
+        }
+    }
+}
