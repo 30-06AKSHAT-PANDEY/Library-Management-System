@@ -1,0 +1,16 @@
+public void addBook(String title, String author, int quantity) {
+    try {
+        Connection con = DBConnection.getConnection();
+        String query = "INSERT INTO books(title, author, quantity) VALUES (?, ?, ?)";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, title);
+        ps.setString(2, author);
+        ps.setInt(3, quantity);
+
+        ps.executeUpdate();
+        System.out.println("Book Added!");
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
